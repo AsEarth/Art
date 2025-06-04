@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Click Button</title>
+</head>
+<body>
+    <button id="myButton">Click Me</button>
+
+    <script>
+        // 定義事件處理函數
+        function handleClick() {
+            alert('歡迎來發癲!');
+        }
+
+        // 選擇按鈕並添加事件監聽器
+        const button = document.getElementById('myButton');
+        button.addEventListener('click', handleClick);
+    </script>
+</body>
+</html>
