@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>抽籤算命APP</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        button { padding: 10px 20px; font-size: 16px; }
+        #result { margin-top: 20px; font-size: 24px; }
+    </style>
+</head>
+<body>
+    <h1>抽籤算命</h1>
+    <button onclick="drawFortune()">抽籤</button>
+    <div id="result"></div>
+
+    <script>
+        const fortunes = [
+            "今天會有好運氣！",
+            "小心謹慎，避免衝動。",
+            "愛情運勢不錯，勇敢追求吧！",
+            "工作上會有挑戰，但你能克服。",
+            "保持積極心態，幸福會來臨。"
+        ];
+
+        function drawFortune() {
+            const randomIndex = Math.floor(Math.random() * fortunes.length);
+            document.getElementById('result').innerText = fortunes[randomIndex];
+        }
+    </script>
+
+
+    
+    <!-- 返回主頁的按鈕 -->
+    <a href="index.html">
+        <button>返回首頁</button>
+    </a>
+</body>
+</html>
