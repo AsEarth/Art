@@ -4,6 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的網站</title>
+    <style>
+        .button {
+            padding: 15px 30px; /* 增加按鈕大小 */
+            background: linear-gradient(45deg, #ff007f, #7f00ff); /* 幻彩色 */
+            border: none;
+            border-radius: 25px; /* 圓角 */
+            color: white;
+            font-size: 18px; /* 字體大小 */
+            cursor: pointer;
+            opacity: 0.8; /* 半透明 */
+            transition: opacity 0.3s; /* 過渡效果 */
+        }
+        .button:hover {
+            opacity: 1; /* 鼠標懸停時不透明 */
+        }
+    </style>
 </head>
 <body>
     <h1>歡迎來到我的網站！</h1>
@@ -11,7 +27,7 @@
     
     <!-- 按鈕連結到算命頁 -->
     <a href="fortune-telling.html">
-        <button>算命</button>
+        <button class="button">算命</button>
     </a>
 </body>
 </html>

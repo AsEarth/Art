@@ -2,26 +2,61 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>抽籤算命APP</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
-        button { padding: 10px 20px; font-size: 16px; }
-        #result { margin-top: 20px; font-size: 24px; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(45deg, #ff007f, #7f00ff); /* 幻彩色 */
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 20px; /* 與結果框的距離 */
+        }
+        button:hover {
+            background: linear-gradient(45deg, #7f00ff, #ff007f); /* 幻彩色反轉 */
+        }
+        #result-container {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px; /* 圓角 */
+            background: linear-gradient(45deg, #ff007f, #7f00ff); /* 幻彩框 */
+            color: white;
+            display: inline-block;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* 陰影效果 */
+        }
+        #result {
+            font-size: 24px;
+            margin: 0; /* 清除邊距 */
+        }
     </style>
 </head>
 <body>
     <h1>抽籤算命</h1>
-    <button onclick="drawFortune()">抽籤</button>
-    <div id="result"></div>
+    <div id="result-container">
+        <div id="result">請點擊按鈕抽籤！</div> <!-- 預設提示 -->
+    </div>
+    <div style="margin-top: 20px;"> <!-- 確保按鈕在結果框下方 -->
+        <button onclick="drawFortune()">抽籤</button>
+    </div>
 
     <script>
         const fortunes = [
             "今天會有好運氣！",
-            "小心謹慎，避免衝動。",
+            "今天可以盡情享受美食！",
             "愛情運勢不錯，勇敢追求吧！",
-            "工作上會有挑戰，但你能克服。",
-            "保持積極心態，幸福會來臨。"
+            "工作上會有好消息，準備好好表現吧。",
+            "保持積極心態，幸福會來臨。",
+            "深呼吸，感受每個生活中的小確幸。",
+            "用愛去感受身邊的人事物，感恩我們擁有的！"
         ];
 
         function drawFortune() {
@@ -30,11 +65,48 @@
         }
     </script>
 
-
-    
     <!-- 返回主頁的按鈕 -->
     <a href="index.html">
-        <button>返回首頁</button>
+        <button class="button">返回首頁</button>
     </a>
+
 </body>
 </html>
+
+
+
+
+
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="zh-Hant"> -->
+<!-- <head> -->
+    <!-- <meta charset="UTF-8"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <title>算命頁</title> -->
+    <!-- <style> -->
+        <!-- .button { -->
+            <!-- padding: 15px 30px; /* 增加按鈕大小 */ -->
+            <!-- background: linear-gradient(45deg, #ff007f, #7f00ff); /* 幻彩色 */ -->
+            <!-- border: none; -->
+            <!-- border-radius: 25px; /* 圓角 */ -->
+            <!-- color: white; -->
+            <!-- font-size: 18px; /* 字體大小 */ -->
+            <!-- cursor: pointer; -->
+            <!-- opacity: 0.8; /* 半透明 */ -->
+            <!-- transition: opacity 0.3s; /* 過渡效果 */ -->
+        <!-- } -->
+        <!-- .button:hover { -->
+            <!-- opacity: 1; /* 鼠標懸停時不透明 */ -->
+        <!-- } -->
+    <!-- </style> -->
+<!-- </head> -->
+<!-- <body> -->
+    <!-- <h1>算命頁</h1> -->
+    <!-- <p>這裡是算命的內容。</p> -->
+    
+    <!-- 返回主頁的按鈕 -->
+    <!-- <a href="index.html"> -->
+        <!-- <button class="button">返回首頁</button> -->
+    <!-- </a> -->
+<!-- </body> -->
+<!-- </html> -->
