@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡單心理測驗</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>心理測驗</h1>
+    <div class="question">
+        <p>1. 你通常喜歡哪種活動？</p>
+        <button onclick="answer('A')">A. 和朋友聚會</button>
+        <button onclick="answer('B')">B. 獨自閱讀</button>
+    </div>
+    <div class="question">
+        <p>2. 面對困難時，你會怎麼做？</p>
+        <button onclick="answer('A')">A. 主動尋求幫助</button>
+        <button onclick="answer('B')">B. 獨自解決</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        let score = 0;
+
+        function answer(choice) {
+            if (choice === 'A') {
+                score += 1;
+            }
+            if (score === 2) {
+                document.getElementById('result').innerText = '你是一個外向的人！';
+            } else if (score === 0) {
+                document.getElementById('result').innerText = '你是一個內向的人！';
+            } else {
+                document.getElementById('result').innerText = '你有外向和內向的特質！';
+            }
+        }
+    </script>
+</body>
+</html>
