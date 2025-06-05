@@ -17,11 +17,18 @@
         .question {
             margin: 20px 0;
         }
-        button {
+        .answer {
             display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
+            margin: 10px auto;
+            padding: 10px;
             font-size: 16px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            cursor: pointer; /* 鼠標指針變為手形 */
+            transition: background 0.3s;
+        }
+        .answer:hover {
+            background: #d0d0d0; /* 懸停時變更背景色 */
         }
         a {
             text-decoration: none;
@@ -38,7 +45,7 @@
             margin-top: 20px;
         }
         .back-button:hover {
-            background: liner-gradient(45deg, #7f00ff, #ff007f); /* 懸停時顏色變化 */
+            background: linear-gradient(45deg, #7f00ff, #ff007f); /* 懸停時顏色變化 */
         }
         #result {
             margin-top: 20px;
@@ -49,16 +56,55 @@
 </head>
 <body>
     <h1>心理測驗</h1>
-    <div class="question">
-        <p>1. 你通常喜歡那種活動？</p>
-        <button onclick="answer('A')">A. 和朋友聚會</button>
-        <button onclick="answer('B')">B. 獨自閱讀</button>
+
+    <div class="question" id="question1">
+        <p>1. 你通常喜歡哪種活動？</p>
+        <span class="answer" onclick="answer(1, 1)">A. 和朋友聚會</span>
+        <span class="answer" onclick="answer(1, 2)">B. 獨自閱讀</span>
+        <span class="answer" onclick="answer(1, 3)">C. 參加運動</span>
+        <span class="answer" onclick="answer(1, 4)">D. 藝術創作</span>
     </div>
-    <div class="question">
+
+    <div class="question" id="question2">
         <p>2. 面對困難時，你會怎麼做呢？</p>
-        <button onclick="answer('A')">A. 主動尋求幫助</button>
-        <button onclick="answer('B')">B. 獨自解決</button>
+        <span class="answer" onclick="answer(2, 1)">A. 主動尋求幫助</span>
+        <span class="answer" onclick="answer(2, 2)">B. 獨自解決</span>
+        <span class="answer" onclick="answer(2, 3)">C. 記錄下來思考</span>
+        <span class="answer" onclick="answer(2, 4)">D. 尋找靈感</span>
     </div>
+
+    <div class="question" id="question3">
+        <p>3. 你最喜歡哪種音樂風格？</p>
+        <span class="answer" onclick="answer(3, 1)">A. 流行音樂</span>
+        <span class="answer" onclick="answer(3, 2)">B. 古典音樂</span>
+        <span class="answer" onclick="answer(3, 3)">C. 搖滾音樂</span>
+        <span class="answer" onclick="answer(3, 4)">D. 爵士音樂</span>
+    </div>
+
+    <div class="question" id="question4">
+        <p>4. 你如何放鬆自己？</p>
+        <span class="answer" onclick="answer(4, 1)">A. 看電影</span>
+        <span class="answer" onclick="answer(4, 2)">B. 去健身</span>
+        <span class="answer" onclick="answer(4, 3)">C. 閱讀書籍</span>
+        <span class="answer" onclick="answer(4, 4)">D. 旅行</span>
+    </div>
+
+    <div class="question" id="question5">
+        <p>5. 你喜歡的食物是？</p>
+        <span class="answer" onclick="answer(5, 1)">A. 中式料理</span>
+        <span class="answer" onclick="answer(5, 2)">B. 西式料理</span>
+        <span class="answer" onclick="answer(5, 3)">C. 日本料理</span>
+        <span class="answer" onclick="answer(5, 4)">D. 甜點</span>
+    </div>
+
+    <div class="question" id="question6">
+        <p>6. 你的理想假期是？</p>
+        <span class="answer" onclick="answer(6, 1)">A. 海灘度假</span>
+        <span class="answer" onclick="answer(6, 2)">B. 山區健行</span>
+        <span class="answer" onclick="answer(6, 3)">C. 城市旅遊</span>
+        <span class="answer" onclick="answer(6, 4)">D. 文化探索</span>
+    </div>
+
     <div id="result"></div>
 
     <a href="index.html">
@@ -67,22 +113,37 @@
 
     <script>
         let score = 0;
+        let questionsAnswered = 0;
 
-        function answer(choice) {
-            if (choice === 'A') {
-                score += 1;
-            }
-            if (score === 2) {
-                document.getElementById('result').innerText = '你是一個外向的人！';
-            } else if (score === 0) {
-                document.getElementById('result').innerText = '你是一個內向的人！';
-            } else {
-                document.getElementById('result').innerText = '你有外向和內向的特質！';
+        function answer(questionNumber, points) {
+            // 記錄得分
+            score += points;
+            questionsAnswered++;
+
+            // 隱藏當前問題
+            document.getElementById(`question${questionNumber}`).style.display = 'none';
+
+            // 如果所有問題都已回答，顯示結果
+            if (questionsAnswered === 6) {
+                showResult();
             }
         }
+
+        function showResult() {
+            let resultText = '';
+
+            if (score >= 6 && score <= 11) {
+                resultText = '你是一個內向和沉思的人！';
+            } else if (score >= 12 && score <= 17) {
+                resultText = '你是一個平衡的人，擅長社交和獨處！';
+            } else if (score >= 18 && score <= 23) {
+                resultText = '你是一個外向且充滿活力的人！';
+            } else if (score >= 24) {
+                resultText = '你是一個極具創造力和冒險精神的人！';
+            }
+
+            document.getElementById('result').innerText = resultText;
+        }
     </script>
-
-
-
 </body>
 </html>
