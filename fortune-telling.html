@@ -15,29 +15,29 @@
             font-size: 16px;
             border: none;
             border-radius: 5px;
-            background: linear-gradient(45deg, #ff007f, #7f00ff); /* 幻彩色 */
+            background: linear-gradient(45deg, #ff007f, #7f00ff);
             color: white;
             cursor: pointer;
             transition: background 0.3s;
-            margin-top: 20px; /* 與結果框的距離 */
+            margin-top: 20px;
         }
         button:hover {
-            background: linear-gradient(45deg, #7f00ff, #ff007f); /* 幻彩色反轉 */
+            background: linear-gradient(45deg, #7f00ff, #ff007f);
         }
         #result-container {
             margin-top: 20px;
             padding: 20px;
-            border-radius: 10px; /* 圓角 */
-            background: linear-gradient(45deg, #ff007f, #7f00ff); /* 幻彩框 */
+            border-radius: 10px;
+            background: linear-gradient(45deg, #ff007f, #7f00ff);
             color: white;
             display: inline-block;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* 陰影效果 */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
         #result {
             font-size: 24px;
-            margin: 0; /* 清除邊距 */
+            margin: 0;
         }
-             .ball {
+        .ball {
             display: inline-block;
             width: 40px;
             height: 40px;
@@ -54,10 +54,10 @@
 <body>
     <h1>好運抽籤</h1>
     <div id="result-container">
-        <div id="result">請點擊按鈕抽籤！</div> <!-- 預設提示 -->
+        <div id="result">請點擊按鈕抽籤！</div>
     </div>
-       <div id="number-result"></div> 
-    <div style="margin-top: 20px;"> <!-- 確保按鈕在結果框下方 -->
+    <div id="number-result"></div> 
+    <div style="margin-top: 20px;">
         <button onclick="drawFortune()">今天運勢</button>
     </div>
 
@@ -78,32 +78,157 @@
             document.getElementById('result').innerText = fortunes[randomIndex];
 
             // 隨機抽取 3 個不重複的號碼
-        const luckyNumbers = new Set();
-        while (luckyNumbers.size < 3) {
-            const randomNum = Math.floor(Math.random() * 99) + 1;
-            luckyNumbers.add(randomNum);
-        }
+            const luckyNumbers = new Set();
+            while (luckyNumbers.size < 3) {
+                const randomNum = Math.floor(Math.random() * 99) + 1;
+                luckyNumbers.add(randomNum);
+            }
 
-        // 顯示號碼球
-        const numberResultDiv = document.getElementById('number-result');
-        numberResultDiv.innerHTML = ''; // 清空之前的結果
-        luckyNumbers.forEach(num => {
-            const ball = document.createElement('div');
-            ball.className = 'ball';
-            ball.innerText = num;
-            numberResultDiv.appendChild(ball);
-        });
-    }
-        
+            // 顯示號碼球
+            const numberResultDiv = document.getElementById('number-result');
+            numberResultDiv.innerHTML = ''; // 清空之前的結果
+            luckyNumbers.forEach(num => {
+                const ball = document.createElement('div');
+                ball.className = 'ball';
+                ball.innerText = num;
+                numberResultDiv.appendChild(ball);
+            });
+        }
     </script>
 
     <!-- 返回主頁的按鈕 -->
     <a href="index.html">
         <button class="button">返回首頁</button>
     </a>
-
+    
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="zh-Hant"> -->
+<!-- <head> -->
+    <!-- <meta charset="UTF-8"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <title>每天好好運</title> -->
+    <!-- <style> -->
+        <!-- body { -->
+            <!-- font-family: Arial, sans-serif; -->
+            <!-- text-align: center; -->
+            <!-- margin-top: 50px; -->
+        <!-- } -->
+        <!-- button { -->
+            <!-- padding: 10px 20px; -->
+            <!-- font-size: 16px; -->
+            <!-- border: none; -->
+            <!-- border-radius: 5px; -->
+            <!-- background: linear-gradient(45deg, #ff007f, #7f00ff); /* 幻彩色 */ -->
+            <!-- color: white; -->
+            <!-- cursor: pointer; -->
+            <!-- transition: background 0.3s; -->
+            <!-- margin-top: 20px; /* 與結果框的距離 */ -->
+        <!-- } -->
+        <!-- button:hover { -->
+            <!-- background: linear-gradient(45deg, #7f00ff, #ff007f); /* 幻彩色反轉 */ -->
+        <!-- } -->
+        <!-- #result-container { -->
+            <!-- margin-top: 20px; -->
+            <!-- padding: 20px; -->
+            <!-- border-radius: 10px; /* 圓角 */ -->
+            <!-- background: linear-gradient(45deg, #ff007f, #7f00ff); /* 幻彩框 */ -->
+            <!-- color: white; -->
+            <!-- display: inline-block; -->
+            <!-- box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* 陰影效果 */ -->
+        <!-- } -->
+        <!-- #result { -->
+            <!-- font-size: 24px; -->
+            <!-- margin: 0; /* 清除邊距 */ -->
+        <!-- } -->
+             <!-- .ball { -->
+            <!-- display: inline-block; -->
+            <!-- width: 40px; -->
+            <!-- height: 40px; -->
+            <!-- border-radius: 50%; -->
+            <!-- background-color: #f39c12; -->
+            <!-- color: white; -->
+            <!-- text-align: center; -->
+            <!-- line-height: 40px; -->
+            <!-- margin: 5px; -->
+            <!-- font-size: 18px; -->
+        <!-- } -->
+    <!-- </style> -->
+<!-- </head> -->
+<!-- <body> -->
+    <!-- <h1>好運抽籤</h1> -->
+    <!-- <div id="result-container"> -->
+        <!-- <div id="result">請點擊按鈕抽籤！</div> 預設提示 -->
+    <!-- </div> -->
+       <!-- <div id="number-result"></div>  -->
+    <!-- <div style="margin-top: 20px;"> 確保按鈕在結果框下方 -->
+        <!-- <button onclick="drawFortune()">今天運勢</button> -->
+    <!-- </div> -->
+
+    <!-- <script> -->
+        <!-- const fortunes = [ -->
+            <!-- "今天會有好運氣！", -->
+            <!-- "今天可以盡情享受美食！", -->
+            <!-- "愛情運勢不錯，勇敢追求吧！", -->
+            <!-- "工作上會有好消息，準備好好表現吧。", -->
+            <!-- "保持積極心態，幸福會來臨。", -->
+            <!-- "深呼吸，感受每個生活中的小確幸。", -->
+            <!-- "用愛去感受身邊的人事物，感恩我們擁有的！", -->
+            <!-- "每天都能學到新知識，是最大的祝福。" -->
+        <!-- ]; -->
+
+        <!-- function drawFortune() { -->
+            <!-- const randomIndex = Math.floor(Math.random() * fortunes.length); -->
+            <!-- document.getElementById('result').innerText = fortunes[randomIndex]; -->
+
+            <!-- // 隨機抽取 3 個不重複的號碼 -->
+        <!-- const luckyNumbers = new Set(); -->
+        <!-- while (luckyNumbers.size < 3) { -->
+            <!-- const randomNum = Math.floor(Math.random() * 99) + 1; -->
+            <!-- luckyNumbers.add(randomNum); -->
+        <!-- } -->
+
+        <!-- // 顯示號碼球 -->
+        <!-- const numberResultDiv = document.getElementById('number-result'); -->
+        <!-- numberResultDiv.innerHTML = ''; // 清空之前的結果 -->
+        <!-- luckyNumbers.forEach(num => { -->
+            <!-- const ball = document.createElement('div'); -->
+            <!-- ball.className = 'ball'; -->
+            <!-- ball.innerText = num; -->
+            <!-- numberResultDiv.appendChild(ball); -->
+        <!-- }); -->
+    <!-- } -->
+        
+    <!-- </script> -->
+
+    <!-- 返回主頁的按鈕 -->
+    <!-- <a href="index.html"> -->
+        <!-- <button class="button">返回首頁</button> -->
+    <!-- </a> -->
+
+<!-- </body> -->
+<!-- </html> -->
 
 
 
