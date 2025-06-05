@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>抽籤算命APP</title>
+    <title>每天好好運</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -37,15 +37,28 @@
             font-size: 24px;
             margin: 0; /* 清除邊距 */
         }
+             .ball {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f39c12;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            margin: 5px;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
-    <h1>抽籤算命</h1>
+    <h1>好運抽籤</h1>
     <div id="result-container">
         <div id="result">請點擊按鈕抽籤！</div> <!-- 預設提示 -->
     </div>
+       <div id="number-result"></div> 
     <div style="margin-top: 20px;"> <!-- 確保按鈕在結果框下方 -->
-        <button onclick="drawFortune()">抽籤</button>
+        <button onclick="drawFortune()">今天運勢</button>
     </div>
 
     <script>
@@ -63,7 +76,25 @@
         function drawFortune() {
             const randomIndex = Math.floor(Math.random() * fortunes.length);
             document.getElementById('result').innerText = fortunes[randomIndex];
+
+            // 隨機抽取 3 個不重複的號碼
+        const luckyNumbers = new Set();
+        while (luckyNumbers.size < 3) {
+            const randomNum = Math.floor(Math.random() * 99) + 1;
+            luckyNumbers.add(randomNum);
         }
+
+        // 顯示號碼球
+        const numberResultDiv = document.getElementById('number-result');
+        numberResultDiv.innerHTML = ''; // 清空之前的結果
+        luckyNumbers.forEach(num => {
+            const ball = document.createElement('div');
+            ball.className = 'ball';
+            ball.innerText = num;
+            numberResultDiv.appendChild(ball);
+        });
+    }
+        
     </script>
 
     <!-- 返回主頁的按鈕 -->
@@ -109,5 +140,73 @@
     <!-- <a href="index.html"> -->
         <!-- <button class="button">返回首頁</button> -->
     <!-- </a> -->
+<!-- </body> -->
+<!-- </html> -->
+
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="zh"> -->
+<!-- <head> -->
+    <!-- <meta charset="UTF-8"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <title>抽籤遊戲</title> -->
+    <!-- <style> -->
+        <!-- #result-container { -->
+            <!-- margin: 20px; -->
+        <!-- } -->
+        <!-- .ball { -->
+            <!-- display: inline-block; -->
+            <!-- width: 40px; -->
+            <!-- height: 40px; -->
+            <!-- border-radius: 50%; -->
+            <!-- background-color: #f39c12; -->
+            <!-- color: white; -->
+            <!-- text-align: center; -->
+            <!-- line-height: 40px; -->
+            <!-- margin: 5px; -->
+            <!-- font-size: 18px; -->
+        <!-- } -->
+    <!-- </style> -->
+<!-- </head> -->
+<!-- <body> -->
+
+<!-- <div id="result-container"> -->
+    <!-- <div id="fortune-result">這裡顯示運勢</div> -->
+    <!-- <div id="number-result"></div> -->
+    <!-- <button onclick="drawFortune()">抽獎</button> -->
+<!-- </div> -->
+
+<!-- <script> -->
+    <!-- const fortunes = [ -->
+        <!-- "好的運氣即將來臨！", -->
+        <!-- "保持積極，成功在望！", -->
+        <!-- "今天是你的幸運日！", -->
+        <!-- "小心謹慎，避免不必要的麻煩！", -->
+        <!-- "努力會有回報，繼續加油！" -->
+    <!-- ]; -->
+
+    <!-- function drawFortune() { -->
+        <!-- // 隨機選擇運勢 -->
+        <!-- const randomIndex = Math.floor(Math.random() * fortunes.length); -->
+        <!-- document.getElementById('fortune-result').innerText = fortunes[randomIndex]; -->
+
+        <!-- // 隨機抽取 3 個不重複的號碼 -->
+        <!-- const luckyNumbers = new Set(); -->
+        <!-- while (luckyNumbers.size < 3) { -->
+            <!-- const randomNum = Math.floor(Math.random() * 99) + 1; -->
+            <!-- luckyNumbers.add(randomNum); -->
+        <!-- } -->
+
+        <!-- // 顯示號碼球 -->
+        <!-- const numberResultDiv = document.getElementById('number-result'); -->
+        <!-- numberResultDiv.innerHTML = ''; // 清空之前的結果 -->
+        <!-- luckyNumbers.forEach(num => { -->
+            <!-- const ball = document.createElement('div'); -->
+            <!-- ball.className = 'ball'; -->
+            <!-- ball.innerText = num; -->
+            <!-- numberResultDiv.appendChild(ball); -->
+        <!-- }); -->
+    <!-- } -->
+<!-- </script> -->
+
 <!-- </body> -->
 <!-- </html> -->
