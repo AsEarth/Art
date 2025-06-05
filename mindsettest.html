@@ -129,20 +129,27 @@
             }
         }
 
-        function showResult() {
+         function showResult() {
             let resultText = '';
+            let analysisText = '';
 
             if (score >= 6 && score <= 11) {
                 resultText = '你是一個內向和沉思的人！';
+                analysisText = '你喜歡獨處，並在安靜的環境中思考。社交可能會讓你感到疲憊，但你擁有深刻的內在世界。';
             } else if (score >= 12 && score <= 17) {
                 resultText = '你是一個平衡的人，擅長社交和獨處！';
+                analysisText = '你能夠在社交場合中自如地表現，同時也享受獨處的時光，讓自己充電。';
             } else if (score >= 18 && score <= 23) {
                 resultText = '你是一個外向且充滿活力的人！';
+                analysisText = '你喜歡與人互動，並從社交中獲得能量。你的熱情和活力常常吸引周圍的人。';
             } else if (score >= 24) {
                 resultText = '你是一個極具創造力和冒險精神的人！';
+                analysisText = '你不怕挑戰，喜歡探索新事物，並擁有豐富的想像力和創造力。';
+
             }
 
             document.getElementById('result').innerText = resultText;
+            document.getElementById('analysis').innerText = analysisText;
         }
     </script>
 </body>
