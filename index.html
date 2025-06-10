@@ -40,13 +40,13 @@
             /* border-radius: 30px; */
             /* box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);  */
         }
-         body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-        }
+         /* body { */
+            /* font-family: Arial, sans-serif; */
+            /* background-color: #f8f9fa; */
+            /* margin: 0; */
+            /* padding: 20px; */
+            /* text-align: center; */
+        /* } */
         .slideshow-container {
             position: relative;
             max-width: 600px;
@@ -64,40 +64,10 @@
         }
     </style>
 </head>
-<body>
-
-<div class="slideshow-container">
-    <div class="slides">
-        <img src="https://raw.githubusercontent.com/AsEarth/Art/main/myimages/IMG_1814.jpeg" alt="日出1">
-        </div>
-    <!-- <div class="slides"> -->
-        <!-- <img src="https://example.com/sunrise2.jpg" alt="日出2"> -->
-    <!-- </div> -->
-    <!-- <div class="slides"> -->
-        <!-- <img src="https://example.com/sunset1.jpg" alt="日落1"> -->
-    <!-- </div> -->
-    <!-- <div class="slides"> -->
-        <!-- <img src="https://example.com/sunset2.jpg" alt="日落2"> -->
-    <!-- </div> -->
-</div>
-
-<script>
-    let slideIndex = 0;
-    showSlides();
-
-    function showSlides() {
-        const slides = document.getElementsByClassName("slides");
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) { slideIndex = 1; }    
-        slides[slideIndex - 1].style.display = "block";  
-        setTimeout(showSlides, 3000); // 每3秒切換
-    }
-</script>
 
 <body>
+
+    
 
 <!-- <h3>Current Time</h3> -->
 <span class="time" id="current-time"></span>
@@ -156,6 +126,42 @@
         <i class="fas fa-star" style="color: gold;"></i>
     </div>
     <p>這是我的第一個開心玩遊戲網站。</p>
+
+</body>
+
+<body>
+
+    <div class="slideshow-container">
+    <div class="slides">
+        <img src="https//raw.githubusercontent.com/AsEarth/Art/main/myimages/IMG_1814.jpeg" alt="日出1">
+    </div>
+    <div class="slides">
+        <img src="https://example.com/sunrise2.jpg" alt="日出2">
+    </div>
+    <div class="slides">
+        <img src="https://example.com/sunset1.jpg" alt="日落1">
+    </div>
+    <div class="slides">
+        <img src="https://example.com/sunset2.jpg" alt="日落2">
+    </div>
+</div>
+
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        const slides = document.getElementsByClassName("slides");
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1; }    
+        slides[slideIndex - 1].style.display = "block";  
+        setTimeout(showSlides, 3000); // 每3秒切換
+    }
+</script>
+
      <!-- 按鈕連結到算命頁 -->
     <a href="fortune-telling.html">
         <button class="button">抽籤遊戲</button></a>
