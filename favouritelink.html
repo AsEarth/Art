@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>實用超連結表</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+        th {
+            background: linear-gradient(45deg, #9c27b0, #e91e63); /* 幻彩紫色 */
+            color: white;
+        }
+        .button {
+            padding: 10px 30px;
+            background: linear-gradient(45deg, #ff007f, #7f00ff);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        .button-hover {
+            opacity: 1;
+        }
+        a {
+            color: #9c27b0; /* 幻彩紫色 */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #e91e63; /* 懸停時顏色 */
+        }
+    </style>
+</head>
+<body>
+
+<h2>實用超連結</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>名稱</th>
+            <th>超連結</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Google</td>
+            <td><a href="https://www.google.com" target="_blank">訪問 Google</a></td>
+        </tr>
+        <tr>
+            <td>YouTube</td>
+            <td><a href="https://www.youtube.com" target="_blank">訪問 YouTube</a></td>
+        </tr>
+        <tr>
+            <td>Wikipedia</td>
+            <td><a href="https://www.wikipedia.org" target="_blank">訪問 Wikipedia</a></td>
+        </tr>
+        <tr>
+            <td>Stack Overflow</td>
+            <td><a href="https://stackoverflow.com" target="_blank">訪問 Stack Overflow</a></td>
+        </tr>
+        <tr>
+            <td>GitHub</td>
+            <td><a href="https://github.com" target="_blank">訪問 GitHub</a></td>
+        </tr>
+    </tbody>
+</table>
+
+<a href="index.html">
+    <button class="button">返回首頁</button>
+</a>
+
+</body>
+</html>
