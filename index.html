@@ -38,7 +38,7 @@
             color: #333;
             background-color: rgba(255, 255, 255, 0.7); /* 半透明背景 */
             padding: 12px;
-            margin-top: 9px;
+            margin-top: 12px;
             /* border-radius: 30px; */
             /* box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);  */
         }
@@ -78,8 +78,8 @@
 <!-- <h3>Current Time</h3> -->
 <span class="time" id="current-time">
 <i class="fas fa-sun weather-icon" id="weather-icon"></i>
-<span id="date-display"></span> <!-- 用於顯示日期 -->
-<br>
+<!-- <span id="date-display"></span> 用於顯示日期 -->
+<!-- <br> -->
 <span id="time-display"></span> <!-- 用於顯示時間 -->
 </span>
 
@@ -107,13 +107,13 @@
                 weatherIcon.classList.add('fa-moon'); // 晚上使用月圖標
             }
         // 格式化日期和時間
-            document.getElementById('date-display').textContent = `${day}/${month}/${year} ${weekday}`;
-            document.getElementById('time-display').textContent = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
-        }
+            // document.getElementById('date-display').textContent = `${day}/${month}/${year} ${weekday}`;
+            // document.getElementById('time-display').textContent = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+        // }
        
             // 格式化為 日/月/年 星期 時:分:秒
-        // document.getElementById('time-display').textContent = `${day}/${month}/${year} ${weekday} ${hours}:${minutes}:${seconds}`;
-    // }
+        document.getElementById('time-display').textContent = `${day}/${month}/${year} ${weekday} ${hours}:${minutes}:${seconds}`;
+    }
    
     // 每秒更新時間
     setInterval(updateTime, 1000);
