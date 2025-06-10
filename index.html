@@ -77,6 +77,7 @@
 <!-- <h3>Current Time</h3> -->
 <span class="time" id="current-time">
 <i class="fas fa-sun weather-icon" id="weather-icon"></i>
+<span id="time-display"></span> <!-- 用於顯示時間 -->
 </span>
 
 <script>
@@ -102,7 +103,7 @@
                 weatherIcon.classList.remove('fa-sun');
                 weatherIcon.classList.add('fa-moon'); // 晚上使用月圖標
             }
-
+        
         // 格式化為 日/月/年 星期 時:分:秒
         document.getElementById('current-time').textContent = `${day}/${month}/${year} ${weekday} ${hours}:${minutes}:${seconds}`;
     }
