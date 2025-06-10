@@ -71,7 +71,9 @@
 
 
 <!-- <h3>Current Time</h3> -->
-<span class="time" id="current-time"></span>
+<span class="time" id="current-time">
+<i class="fas fa-sun weather-icon" id="weather-icon"></i>
+</span>
 
 <script>
     function updateTime() {
@@ -86,6 +88,16 @@
         // 獲取星期幾
         const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const weekday = weekdays[now.getDay()];
+
+        // 設定天氣圖標（可以根據實際情況更改）
+        const weatherIcon = document.getElementById('weather-icon');
+        if (hours >= 6 && hours < 18) {
+                weatherIcon.classList.remove('fa-moon');
+                weatherIcon.classList.add('fa-sun'); // 白天使用日圖標
+            } else {
+                weatherIcon.classList.remove('fa-sun');
+                weatherIcon.classList.add('fa-moon'); // 晚上使用月圖標
+            }
 
         // 格式化為 日/月/年 星期 時:分:秒
         document.getElementById('current-time').textContent = `${day}/${month}/${year} ${weekday} ${hours}:${minutes}:${seconds}`;
