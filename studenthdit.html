@@ -5,17 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>課程表</title>
     <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明效果 */
         }
         th, td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 10px;
             text-align: left;
+            backdrop-filter: blur(10px); /* 背景模糊效果 */
         }
         th {
-            background-color: #f2f2f2;
+            background-color: rgba(240, 240, 240, 0.9);
+            font-weight: bold;
+        }
+        .game-software {
+            background-color: rgba(255, 172, 244, 0.8); /* 半透明紫色 */
+        }
+        .software-engineering {
+            background-color: rgba(255, 224, 178, 0.8); /* 半透明橙色 */
+        }
+        .network-security {
+            background-color: rgba(241, 248, 233, 0.8); /* 半透明綠色 */
         }
         @media (max-width: 600px) {
             table, thead, tbody, th, td, tr {
@@ -41,20 +60,20 @@
 
 <h2>課程表</h2>
 
-<div style="overflow-x: auto;">
+
 <table>
     <thead>
         <tr>
             <th> 學期 / 課程 </th>
             <th>Game Software Development 遊戲軟體</th>
             <th>Software Engineering 軟件工程</th>
-            <th>Cyberecurity 網絡安全</th>
+            <th>Cybersecurity 網絡安全</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>第一學期</td>
-            <td>
+            <td class="game-software">
                 數據庫原理<br>
                 物件導向程式編寫初階<br>
                 遊戲3D人物設計<br>
@@ -63,7 +82,7 @@
                 基礎職場英文傳意：高效口語溝通<br>
                 全人發展 – 心智轉換：實踐個人成長與效能
             </td>
-            <td>
+            <td class="software-engineering">
                 數據庫原理<br>
                 程式編寫<br>
                 網絡基礎<br>
@@ -72,7 +91,7 @@
                 基礎職場英文傳意：高效口語溝通<br>
                 全人發展 – 心智轉換：實踐個人成長與效能
             </td>
-            <td>
+            <td class="network-security">
                 程式編寫基礎<br>
                 網絡基礎<br>
                 數據庫應用<br>
@@ -85,7 +104,7 @@
         </tr>
         <tr>
             <td>第二學期</td>
-            <td>
+            <td class="game-software">
                 電腦遊戲開發數學<br>
                 網絡基礎<br>
                 C++程式編寫及數據結構<br>
@@ -95,7 +114,7 @@
                 基礎職場英文傳意：數碼文書寫作<br>
                 全人發展 – 合作、團隊與社會參與（甲部）
             </td>
-            <td>
+            <td class="software-engineering">
                 軟件項目管理及質素保證<br>
                 物件導向技術<br>
                 數據結構和算法：概念與實施<br>
@@ -105,7 +124,7 @@
                 資訊科技精要 – 互聯網<br>
                 互聯網及多媒體應用軟件開發 
             </td>
-            <td>
+            <td class="network-security">
                 離散數學與統計<br>
                 高級編程技術<br>
                 伺服器管理<br>
@@ -117,7 +136,7 @@
         </tr>
         <tr>
             <td>第三學期</td>
-            <td>
+            <td class="game-software">
                 資訊科技精要 – 互聯網<br>
                 資訊科技專業<br>
                 C++程式編寫及數據結構<br>
@@ -126,7 +145,7 @@
                 全人發展 – 合作、團隊與社會參與（乙部）<br>
                 增潤單元B
             </td>
-            <td>
+            <td class="software-engineering">
                 系統開發專題項目<br>
                 互聯網及多媒體應用軟件開發<br>
                 流動系統程式編寫<br>
@@ -134,7 +153,7 @@
                 全人發展 – 合作、團隊與社會參與（乙部）<br>
                 增潤單元B
             </td>
-            <td>
+            <td class="network-security">
                 重要網絡安全課題<br>
                 網絡互聯技術<br>
                 系統管理及保安專題研習<br>
@@ -144,7 +163,7 @@
         </tr>
         <tr>
             <td>第四學期</td>
-            <td>
+            <td class="game-software">
                 遊戲伺服器設計與實踐<br>
                 遊戲開發技術進階課題<br>
                 遊戲軟件開發及品質保證<br>
@@ -153,7 +172,7 @@
                 全人發展 – 21世紀工作才能<br>
                 增潤單元A
             </td>
-            <td>
+            <td class="software-engineering">
                 當代軟件工程<br>
                 畢業專題項目<br>
                 資訊科技專業<br>
@@ -162,7 +181,7 @@
                 職業中文傳意：普通話對話與匯報<br>
                 專業職場英文傳意：故事營銷與求職
             </td>
-            <td>
+            <td class="network-security">
                 伺服器及網絡服務保安管理<br>
                 資訊系統安全查核<br>
                 企業網絡技術<br>
@@ -173,7 +192,7 @@
         </tr>
         <tr>
             <td>第五學期</td>
-            <td>
+            <td class="game-software">
                 遊戲開發互動系統<br>
                 遊戲邏輯及人工智能<br>
                 流動應用程式及遊戲開發技術<br>
@@ -181,7 +200,7 @@
                 職業中文傳意：普通話報告與紀實文書<br>
                 專業職場英文傳意：推銷及游說簡報
             </td>
-            <td>
+            <td class="software-engineering">
                 企業軟件<br>
                 企業系統開發 <br>
                 畢業專題項目<br>
@@ -190,7 +209,7 @@
                 全人發展 – 21世紀工作才能<br>
                 增潤單元A
             </td>
-            <td>
+            <td class="network-security">
                 高級網絡保安<br>
                 增潤單元A<br>
                 互聯網應用安全<br>
@@ -200,7 +219,8 @@
         </tr>
     </tbody>
 </table>
-</div>
+
 
 </body>
 </html>
+    
