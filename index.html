@@ -40,8 +40,63 @@
             /* border-radius: 30px; */
             /* box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);  */
         }
+         body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .slides {
+            display: none;
+        }
+        img {
+            width: 100%;
+            border-radius: 15px;
+        }
     </style>
 </head>
+<body>
+
+<div class="slideshow-container">
+    <div class="slides">
+        <img src="https://raw.githubusercontent.com/AsEarth/Art/main/myimages/IMG_1814.jpeg" alt="日出1">
+        </div>
+    <!-- <div class="slides"> -->
+        <!-- <img src="https://example.com/sunrise2.jpg" alt="日出2"> -->
+    <!-- </div> -->
+    <!-- <div class="slides"> -->
+        <!-- <img src="https://example.com/sunset1.jpg" alt="日落1"> -->
+    <!-- </div> -->
+    <!-- <div class="slides"> -->
+        <!-- <img src="https://example.com/sunset2.jpg" alt="日落2"> -->
+    <!-- </div> -->
+</div>
+
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        const slides = document.getElementsByClassName("slides");
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1; }    
+        slides[slideIndex - 1].style.display = "block";  
+        setTimeout(showSlides, 3000); // 每3秒切換
+    }
+</script>
+
 <body>
 
 <!-- <h3>Current Time</h3> -->
