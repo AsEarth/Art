@@ -1,0 +1,271 @@
+<!-- 存做：matchcards.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 MatchCards SDD4005</title>
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 MatchCards SDD4005 (你個img版)</title>
+    <style>
+        body { 
+            font-family: Arial; text-align: center; 
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            color: white; margin: 0; padding: 20px;
+            height: 100vh; display: flex; flex-direction: column; justify-content: center;
+        }
+        #gameBoard { 
+            display: grid; grid-template-columns: repeat(6, 1fr); 
+            gap: 10px; max-width: 500px; margin: 20px auto;
+        }
+        .card { 
+            height: 70px; border-radius: 10px; 
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.3s;
+            background: #2c3e50 url('img/back.jpg') center/cover; /* 你個背面圖 */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .card.flipped { 
+            background: #4CAF50; transform: rotateY(180deg); 
+        }
+        .card.matched { 
+            background: gold !important; transform: scale(1.1); 
+        }
+        .card.wrong { 
+            animation: shake 0.5s; 
+        }
+        @keyframes shake { 
+            0%, 100% { transform: translateX(0); } 
+            25% { transform: translateX(-10px); } 
+            75% { transform: translateX(10px); } 
+        }
+        #score, #timer { font-size: 24px; margin: 10px; }
+        button { 
+            background: #FF6B6B; color: white; border: none; 
+            padding: 15px 30px; font-size: 18px; border-radius: 25px; 
+            cursor: pointer; margin: 10px; 
+        }
+        button:hover { background: #FF5252; transform: scale(1.05); }
+        .card img { width: 60px; height: 60px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <h1>🎮 MatchCards (你個img版)</h1>
+    <div id="score">得分: <span id="scoreNum">0</span>/240</div>
+    <div id="timer">時間: <span id="timeNum">0</span>s</div>
+    <div id="gameBoard"></div>
+    <button onclick="newGame()">🔄 新遊戲</button>
+    <p style="font-size:14px;">SDD4005 Portfolio | 6x6 | Java→HTML5跨iOS ✓</p>
+
+    <script>
+        let cards = [], flipped = [], matched = 0, score = 0, startTime = 0, timer;
+        
+        // 你個img檔案名陣列（改成你資料夾內嘅圖片名）
+        const imgFiles = [
+            'card1.png', 'card2.png', 'card3.png', 'card4.png', 'card5.png', 'card6.png',
+            'card7.png', 'card8.png', 'card9.png', 'card10.png', 'card11.png', 'card12.png'
+        ];
+        
+        function initGame() {
+            // 重複2次做12對（6x6=24張）
+            cards = [...imgFiles, ...imgFiles];
+            shuffle(cards);
+            
+            const board = document.getElementById('gameBoard');
+            board.innerHTML = '';
+            
+            cards.forEach((imgName, i) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.dataset.img = imgName;
+                card.dataset.id = i;
+                card.innerHTML = '<div style="font-size:32px;">?</div>';
+                card.onclick = () => flipCard(i);
+                board.appendChild(card);
+            });
+            
+            matched = 0; score = 0; flipped = [];
+            document.getElementById('scoreNum').textContent = '0';
+            clearInterval(timer);
+            startTime = Date.now();
+            timer = setInterval(updateTimer, 1000);
+        }
+        
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+        
+        function flipCard(id) {
+            if (flipped.length === 2 || cards[id] === 'matched') return;
+            
+            const card = document.querySelector(`[data-id="${id}"]`);
+            card.classList.add('flipped');
+            card.innerHTML = `<img src="img/${cards[id]}" alt="card" onerror="this.src='img/missing.png'">`;
+            flipped.push(id);
+            
+            if (flipped.length === 2) {
+                setTimeout(checkMatch, 800);
+            }
+        }
+        
+        function checkMatch() {
+            const [id1, id2] = flipped;
+            if (cards[id1] === cards[id2]) {
+                document.querySelector(`[data-id="${id1}"]`).classList.add('matched');
+                document.querySelector(`[data-id="${id2}"]`).classList.add('matched');
+                cards[id1] = cards[id2] = 'matched';
+                matched += 2;
+                score += 10;
+                document.getElementById('scoreNum').textContent = score;
+            } else {
+                const card1 = document.querySelector(`[data-id="${id1}"]`);
+                const card2 = document.querySelector(`[data-id="${id2}"]`);
+                card1.classList.add('wrong');
+                card2.classList.add('wrong');
+                setTimeout(() => {
+                    card1.classList.remove('flipped', 'wrong');
+                    card2.classList.remove('flipped', 'wrong');
+                    card1.innerHTML = '<div style="font-size:32px;">?</div>';
+                    card2.innerHTML = '<div style="font-size:32px;">?</div>';
+                }, 500);
+                score = Math.max(0, score - 2);
+                document.getElementById('scoreNum').textContent = score;
+            }
+            flipped = [];
+            
+            if (matched === 24) {
+                clearInterval(timer);
+                setTimeout(() => {
+                    alert(`🎉 通關！\n得分: ${score}/240\n時間: ${Math.floor((Date.now()-startTime)/1000)}秒\nSDD4005滿分Portfolio！`);
+                }, 500);
+            }
+        }
+        
+        function updateTimer() {
+            document.getElementById('timeNum').textContent = Math.floor((Date.now()-startTime)/1000);
+        }
+        
+        function newGame() {
+            clearInterval(timer);
+            initGame();
+        }
+        
+        initGame();
+    </script>
+</body>
+</html>
+<!-- 上面完整CSS + JS貼呢度 -->
+</head>
+<body>
+    <!-- MatchCards 遊戲區塊（貼你網頁分頁） -->
+<div id="matchcards-game" style="background: linear-gradient(45deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 20px; margin: 20px;">
+    <h2 style="text-align:center;">🎮 MatchCards SDD4005</h2>
+    <div style="font-size:24px; margin:10px; display:flex; justify-content:space-around;">
+        <span>得分: <span id="scoreNum">0</span>/240</span>
+        <span>時間: <span id="timeNum">0</span>s</span>
+    </div>
+    <div id="gameBoard" style="display:grid; grid-template-columns:repeat(6,1fr); gap:10px; max-width:500px; margin:20px auto;"></div>
+    <div style="text-align:center;">
+        <button onclick="newGame()" style="background:#FF6B6B; color:white; border:none; padding:15px 30px; font-size:18px; border-radius:25px; cursor:pointer; margin:5px;">🔄 新遊戲</button>
+        <button onclick="showScore()" style="background:#4CAF50; color:white; border:none; padding:15px 30px; font-size:18px; border-radius:25px; cursor:pointer; margin:5px;">🏆 得分</button>
+    </div>
+    <p style="font-size:14px; text-align:center;">Java→HTML5跨iOS | 6x6完美對齊 ✓</p>
+</div>
+
+<style>
+/* MatchCards CSS（放你<head>或<style>內） */
+#gameBoard .card { 
+    height:70px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition:all 0.3s; background:#2c3e50 url('img/back.jpg') center/cover;
+    box-shadow:0 4px 8px rgba(0,0,0,0.3); font-size:32px;
+}
+#gameBoard .card.flipped { background:#4CAF50; transform:rotateY(180deg); }
+#gameBoard .card.matched { background:gold !important; transform:scale(1.1); }
+#gameBoard .card.wrong { animation:shake 0.5s; }
+@keyframes shake { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-10px);} 75%{transform:translateX(10px);} }
+#gameBoard .card img { width:60px; height:60px; border-radius:8px; }
+</style>
+
+<script>
+// MatchCards JS（放你<script>或底部）
+let cards = [], flipped = [], matched = 0, score = 0, startTime = 0, timer;
+
+// 你個img檔案名（改成你資料夾）
+const imgFiles = ['card1.png','card2.png','card3.png','card4.png','card5.png','card6.png',
+                  'card7.png','card8.png','card9.png','card10.png','card11.png','card12.png'];
+
+function initGame() {
+    cards = [...imgFiles, ...imgFiles]; shuffle(cards);
+    const board = document.getElementById('gameBoard');
+    board.innerHTML = '';
+    cards.forEach((imgName, i) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.dataset.img = imgName; card.dataset.id = i;
+        card.innerHTML = '?'; card.onclick = () => flipCard(i);
+        board.appendChild(card);
+    });
+    matched = 0; score = 0; flipped = [];
+    document.getElementById('scoreNum').textContent = '0';
+    clearInterval(timer); startTime = Date.now();
+    timer = setInterval(() => document.getElementById('timeNum').textContent = 
+        Math.floor((Date.now()-startTime)/1000), 1000);
+}
+
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+function flipCard(id) {
+    if (flipped.length === 2 || cards[id] === 'matched') return;
+    const card = document.querySelector(`#gameBoard [data-id="${id}"]`);
+    card.classList.add('flipped');
+    card.innerHTML = `<img src="img/${cards[id]}" onerror="this.src='img/missing.png'">`;
+    flipped.push(id);
+    if (flipped.length === 2) setTimeout(checkMatch, 800);
+}
+
+function checkMatch() {
+    const [id1, id2] = flipped;
+    if (cards[id1] === cards[id2]) {
+        document.querySelector(`#gameBoard [data-id="${id1}"]`).classList.add('matched');
+        document.querySelector(`#gameBoard [data-id="${id2}"]`).classList.add('matched');
+        cards[id1] = cards[id2] = 'matched'; matched += 2; score += 10;
+        document.getElementById('scoreNum').textContent = score;
+    } else {
+        const card1 = document.querySelector(`#gameBoard [data-id="${id1}"]`);
+        const card2 = document.querySelector(`#gameBoard [data-id="${id2}"]`);
+        card1.classList.add('wrong'); card2.classList.add('wrong');
+        setTimeout(() => {
+            card1.classList.remove('flipped','wrong'); card2.classList.remove('flipped','wrong');
+            card1.innerHTML = '?'; card2.innerHTML = '?';
+        }, 500); score = Math.max(0, score - 2);
+        document.getElementById('scoreNum').textContent = score;
+    }
+    flipped = [];
+    if (matched === 24) {
+        clearInterval(timer);
+        setTimeout(() => alert(`🎉 通關！\n得分: ${score}/240\nSDD4005 Portfolio滿分！`), 500);
+    }
+}
+
+function newGame() { clearInterval(timer); initGame(); }
+function showScore() { 
+    alert(`📊 得分: ${score}/240\n配對: ${matched}/24\nSDD4005成功！`); 
+}
+
+initGame(); // 自動開始
+</script>
+<!-- 上面完整遊戲<div>貼呢度 -->
+</body>
+</html>
