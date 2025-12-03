@@ -65,8 +65,10 @@
         let cards = [], flipped = [], matched = 0, score = 0, startTime = 0, timer;
         
         // 你個img檔案名陣列（改成你資料夾內嘅圖片名）
-        const myimages = ['back.jpg','angel.jpg','car.jpg','care.jpg','sun.jpg','love.jpg','heart.jpg','joyful.jpg','like.jpg',
-                  'balloon.jpg','good.jpg','happy.jpg','fire.jpg','freedom.jpg','future.jpg','music.jpg','run.jpg','sound.jpg','who.jpg'];
+        const imgFiles = ['myimages/back.jpg','myimages/angel.jpg','myimages/car.jpg','myimages/care.jpg','myimages/sun.jpg',
+                          'myimages/love.jpg','myimages/heart.jpg','myimages/joyful.jpg','myimages/like.jpg',
+                          'myimages/balloon.jpg','myimages/good.jpg','myimages/happy.jpg','myimages/fire.jpg','myimages/freedom.jpg',
+                          'myimages/future.jpg','myimages/music.jpg','myimages/run.jpg','myimages/sound.jpg','myimages/who.jpg'];
         
         function initGame() {
             // 重複2次做12對（6x6=24張）
@@ -196,8 +198,8 @@
 let cards = [], flipped = [], matched = 0, score = 0, startTime = 0, timer;
 
 // 你個img檔案名（改成你資料夾）
-const myimages = ['back.jpg','angel.jpg','car.jpg','care.jpg','sun.jpg','love.jpg','heart.jpg','joyful.jpg','like.jpg',
-                  'balloon.jpg','good.jpg','happy.jpg','fire.jpg','freedom.jpg','future.jpg','music.jpg','run.jpg','sound.jpg','who.jpg'];
+const imgFiles = ['myimages/back.jpg','myimages/angel.jpg','myimages/car.jpg','myimages/care.jpg','myimages/sun.jpg','myimages/love.jpg','myimages/heart.jpg','myimages/joyful.jpg','myimages/like.jpg',
+                  'myimages/balloon.jpg','myimages/good.jpg','myimages/happy.jpg','myimages/fire.jpg','myimages/freedom.jpg','myimages/future.jpg','myimages/music.jpg','myimages/run.jpg','myimages/sound.jpg','myimages/who.jpg'];
 
 function initGame() {
     cards = [...imgFiles, ...imgFiles]; shuffle(cards);
