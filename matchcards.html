@@ -16,14 +16,14 @@
             font-family: Arial; text-align: center; 
             background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
             color: white; margin: 0; padding: 20px;
-            height: 100vh; display: flex; flex-direction: column; justify-content: center;
+            height: 120vh; display: flex; flex-direction: column; justify-content: center;
         }
         #gameBoard { 
             display: grid; grid-template-columns: repeat(6, 1fr); 
-            gap: 10px; max-width: 500px; margin: 20px auto;
+            gap: 12px; max-width: 1200px; margin: 21px auto;
         }
         .card { 
-            height: 70px; border-radius: 10px; 
+            height: 90px; border-radius: 12px; 
             display: flex; align-items: center; justify-content: center;
             cursor: pointer; transition: all 0.3s;
             background: #2c3e50 url('img/back.jpg') center/cover; /* 你個背面圖 */
@@ -50,7 +50,7 @@
             cursor: pointer; margin: 10px; 
         }
         button:hover { background: #FF5252; transform: scale(1.05); }
-        .card img { width: 60px; height: 60px; border-radius: 8px; }
+        .card img { width: 90px; height: 90px; border-radius: 6px; }
     </style>
 </head>
 <body>
