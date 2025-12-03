@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎮 MatchCards SDD4005</title>
+    <title>🎮 Beautiful Life Match Cards</title>
     <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎮 MatchCards SDD4005 (你個img版)</title>
+    <title>🎮 Beautiful Life Match Cards  (你個img版)</title>
     <style>
         body { 
             font-family: Arial; text-align: center; 
@@ -65,10 +65,8 @@
         let cards = [], flipped = [], matched = 0, score = 0, startTime = 0, timer;
         
         // 你個img檔案名陣列（改成你資料夾內嘅圖片名）
-        const imgFiles = [
-            'card1.png', 'card2.png', 'card3.png', 'card4.png', 'card5.png', 'card6.png',
-            'card7.png', 'card8.png', 'card9.png', 'card10.png', 'card11.png', 'card12.png'
-        ];
+        const myimages = ['back.jpg','angel.jpg','car.jpg','care.jpg','sun.jpg','love.jpg','heart.jpg','joyful.jpg','like.jpg',
+                  'balloon.jpg','good.jpg','happy.jpg','fire.jpg','freedom.jpg','future.jpg','music.jpg','run.jpg','sound.jpg','who.jpg'];
         
         function initGame() {
             // 重複2次做12對（6x6=24張）
